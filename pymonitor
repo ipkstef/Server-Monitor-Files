@@ -1,0 +1,24 @@
+from twilio.rest import Client
+from  subprocess import check_output
+import os
+
+#use the subprocess.check function to run container check command
+ 
+PMESSAGE = check_output(["check_docker_container.sh","pokecraft"])
+
+#save authentication as variable 
+
+AuthSid = os.environ.get('TWILLO_API_ID')
+AuthToken = os.environ.get('TWILLO_API_PASS')
+ 
+account_sid = AuthSid 
+auth_token = AuthToken 
+client = Client(account_sid, auth_token) 
+ 
+message = client.messages.create( 
+                              from_='+17034579188',  
+                              body = PMESSAGE ,      
+                              to='+17038324707' 
+                          ) 
+ 
+print(message.sid)

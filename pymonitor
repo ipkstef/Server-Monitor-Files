@@ -18,7 +18,7 @@ client = Client(account_sid, auth_token)
 message = client.messages.create( 
                               from_='+17034579188',  
                               body = PMESSAGE ,      
-                              to='+17038324707' 
+                              to='+17034579188' 
                           ) 
  
 print(message.sid)
